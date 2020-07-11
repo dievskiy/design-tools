@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div id="fh5co-portfolio">
+        <div class="fh5co-portfolio-item ">
+            <div class="fh5co-portfolio-figure animate-box">
+                <span id="hieroglyph"></span>
+            </div>
+            <div class="fh5co-portfolio-description">
+                <h1>Caihong</h1>
+                <h2>AI-hieroglyph generator</h2>
+                <p>Caihong consist of neural network and png2svg tracer. The neural network was trained on 5K Korean
+                    hieroglyphs and produce 64x64 png image. Then png2svg tracer converts the image into svg, so you can
+                    scale the hieroglyph the way you like.</p>
+                <p><a href="javascript:generateHieroglyph('#hieroglyph');" class="btn btn-primary">Generate hieroglyph</a> <a
+                        href="#" class="btn btn-primary">Save .svg</a></p>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
