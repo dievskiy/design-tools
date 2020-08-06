@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="container">
+    <div class="row justify-content-center my-1 text-center">
+        <div class="col-md-6 col-lg-4 py-3">
+            <div class="card">
+                <img class="card-img-top" src="/static/images/hieroglyph-all.png" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Caihong</h5>
+                    <p class="card-text">AI-hieroglyph generator</p>
+                    <a href="{{ url_for('hieroglyph.main') }}" class="btn btn-primary">Try</a>
+                    <a href="#" class="btn btn-outline-primary">Learn more</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 py-3">
+            <div class="card h-100">
+                <img class="card-img-top" src="/static/images/hieroglyph-3.png" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">Coming soon..</h5>
+                    <p class="card-text">Join Slack channel for updates</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 py-3">
+            <div class="card h-100">
+                <img class="card-img-top" src="/static/images/hieroglyph-3.png" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Coming soon..</h5>
+                    <p class="card-text">Join Slack channel for updates</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{##}
+{#        {% for post in posts %}#}
+{#            <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>#}
+{#        {% endfor %}#}
+{% endblock %}

@@ -1,0 +1,40 @@
+html, body {
+  overflow-x: hidden;
+  height: 100%;
+  width: 100%;
+  /*font-family: 'Roboto', sans-serif;*/
+  font-family: 'Montserrat', sans-serif;
+  font-size: large;
+}
+
+.navbar-brand img {
+	height: 2rem;
+}
+.navbar {	
+	font-size: 0.9rem;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: regular;
+}
+
+$theme-colors: (
+  "primary": #ff4500,
+  "danger": #ff4136
+);
+
+.footer-logo {
+	height: 3rem;    
+}
+
+.hor-spacer {
+    height: 200px;
+}
+
+#sticky-footer {
+  flex-shrink: none;
+}
+
+
+
+
+
+@import "node_modules/bootstrap/scss/bootstrap";

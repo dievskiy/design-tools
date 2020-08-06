@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="container">
+        <div class="row align-items-center py-3">
+            <div class="col-lg-6 mb-4 my-lg-auto">
+
+                <span id="hieroglyph">
+                    <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                        width="100%" height="100%" viewBox="0 0 360.000000 360.000000"
+                        preserveAspectRatio="xMidYMid meet">
+                        <g transform="translate(0.000000,360.000000) scale(0.562500,-0.562500)"
+                            fill="#000000" stroke="none">
+                            <path d="M168 453 c-10 -2 -18 -13 -18 -24 0 -16 8 -19 48 -20 26 -1 61 -1 78
+                            0 35 3 47 -8 35 -28 -6 -10 -17 -10 -47 -2 -22 6 -56 11 -76 11 -37 0 -38 -1
+                            -38 -35 0 -34 1 -35 38 -35 20 -1 55 -4 77 -8 63 -12 83 -5 91 30 5 23 2 35
+                            -9 43 -14 10 -14 13 -1 26 12 13 12 18 0 34 -12 17 -16 18 -32 5 -11 -9 -15
+                            -10 -10 -2 5 9 -8 12 -56 11 -35 -1 -71 -3 -80 -6z"/>
+                            <path d="M438 453 c-15 -2 -29 -12 -32 -21 -10 -39 -17 -135 -11 -162 6 -26
+                            11 -30 39 -30 l33 0 6 92 c4 67 10 96 21 104 32 23 15 28 -56 17z"/>
+                            <path d="M152 278 c4 -28 32 -35 141 -37 76 -1 77 -1 77 24 0 23 -4 25 -42 26
+                            -24 0 -74 3 -111 5 -67 5 -68 4 -65 -18z"/>
+                            <path d="M480 229 c-14 -4 -39 -7 -56 -8 -22 -1 -33 -7 -37 -21 -3 -10 0 -21
+                            6 -23 7 -2 12 -14 12 -28 0 -19 6 -25 30 -27 24 -2 32 3 43 25 6 15 12 31 12
+                            37 0 5 7 17 16 27 19 21 8 28 -26 18z"/>
+                            <path d="M166 208 c-9 -12 -16 -42 -16 -65 0 -37 3 -43 21 -43 16 0 20 5 16
+                            20 -6 25 31 37 63 20 24 -13 73 -5 90 15 15 18 -17 36 -48 28 -21 -5 -28 8
+                            -23 40 0 4 -19 7 -43 7 -35 0 -48 -5 -60 -22z"/>
+                        </g>
+                    </svg>
+                </span>
+            </div>
+
+
+            <div class="col-lg-6">
+                <h1 class="font-weight-bold mb-1">Caihong</h1>
+                <p class="mb-4">AI-hieroglyph generator</p>
+
+                <!-- SLIDERS -->
+                <div class="card-group mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <label for="stiffness-range"><small>Stiffness</small></label>
+                            <input type="range" class="custom-range" min="-3" max="10" value="1" id="stiffness-range">
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- BUTTONS -->
+                <button class="btn btn-primary btn-block mb-2" id="generate-button">Generate</button>
+
+                <div class="btn-group btn-block">
+
+                    <button type="button" class="btn btn-outline-primary" id="download-button-png">Save .png</button>
+                    <button type="button" class="btn btn-outline-primary" id="download-button-svg">Save .svg</button>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        $(document).ready(function () {
+            $('#generate-button').click(function () {
+                let stiffnessValue = document.getElementById("stiffness-range").value;
+                $.post('/tools/hieroglyph/generate', {stiffness: stiffnessValue})
+                    .done(function (response) {
+                        $('#hieroglyph').html(response);
+                    }).fail(function () {
+                });
+            });
+            $('#download-button-svg').click(function () {
+		window.location.replace('/tools/hieroglyph/download?format=svg');
+            });
+            $('#download-button-png').click(function () {
+                window.location.replace('/tools/hieroglyph/download?format=png');
+            });
+        });
+    </script>
+
+{% endblock %}
