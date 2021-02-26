@@ -2,46 +2,41 @@
 
 {% block content %}
 
-    <div id="fh5co-portfolio">
-        <div class="fh5co-portfolio-item ">
-            <div class="fh5co-portfolio-figure animate-box" style="">
-                <div id="top-left-sqr">
-                    <img style='height: 100%; width: 100%; object-fit: contain' src='/static/data/img/hieroglyph-1.png'/>
+<div class="container">
+    <div class="row justify-content-center my-1 text-center">
+        <div class="col-md-6 col-lg-4 py-3">
+            <div class="card">
+                <img class="card-img-top" src="/static/images/hieroglyph-all.png" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Caihong</h5>
+                    <p class="card-text">AI-hieroglyph generator</p>
+                    <a href="{{ url_for('home.main') }}" class="btn btn-primary">Try</a>
+                    <a href="#" class="btn btn-outline-primary">Learn more</a>
                 </div>
-                <div id="top-right-sqr">
-                    <img style='height: 100%; width: 100%; object-fit: contain' src='/static/data/img/hieroglyph-2.png'/>
-                </div>
-                <div id="bottom-left-sqr">
-                    <img style='height: 100%; width: 100%; object-fit: contain' src='/static/data/img/hieroglyph-3.png'/>
-                </div>
-                <div id="bottom-left-sqr">
-                    <img style='height: 100%; width: 100%; object-fit: contain' src='/static/data/img/hieroglyph-4.png'/>
-                </div>
-            </div>
-            <div class="fh5co-portfolio-description">
-                <h1>Caihong</h1>
-                    <h2>AI-hieroglyph generator</h2>
-                    <p>Caihong consist of neural network and png2svg tracer. The neural network was trained on 5K Korean
-                        hieroglyphs and produce 64x64 png image. Then png2svg tracer converts the image into svg, so you
-                        can scale the hieroglyph the way you like.</p>
-                    <p><a href="{{ url_for('home.main') }}" class="btn btn-primary">Try it</a></p>
             </div>
         </div>
 
-			<div class="fh5co-portfolio-item fh5co-img-right">
-				<div class="fh5co-portfolio-figure animate-box" style="background-image: url(/static/images/work_4.jpg);"></div>
-				<div class="fh5co-portfolio-description">
-					<h1>Tool name</h1>
-					<h2>Tool short description</h2>
-					<p>Tool long description</p>
-					<p><a href="#" class="btn btn-primary">Try it</a></p>
-				</div>
-			</div>
+        <div class="col-md-6 col-lg-4 py-3">
+            <div class="card h-100">
+                <img class="card-img-top" src="/static/images/hieroglyph-3.png" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">Coming soon..</h5>
+                    <p class="card-text">Join Slack channel for updates</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 py-3">
+            <div class="card h-100">
+                <img class="card-img-top" src="/static/images/hieroglyph-3.png" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Coming soon..</h5>
+                    <p class="card-text">Join Slack channel for updates</p>
+                </div>
+            </div>
+        </div>
+
     </div>
+</div>
 
-
-{##}
-{#        {% for post in posts %}#}
-{#            <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>#}
-{#        {% endfor %}#}
 {% endblock %}

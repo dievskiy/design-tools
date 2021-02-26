@@ -1,20 +1,93 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div id="fh5co-portfolio">
-        <div class="fh5co-portfolio-item ">
-            <div class="fh5co-portfolio-figure animate-box">
-                <span id="hieroglyph"></span>
+
+    <div class="container">
+        <div class="row align-items-center py-3">
+
+            <div class="col-lg-6 mb-4 my-lg-auto">
+                <span id="hieroglyph">
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+     width="360.000000pt" height="360.000000pt" viewBox="0 0 360.000000 360.000000"
+     preserveAspectRatio="xMidYMid meet">
+<metadata>
+Created by potrace 1.16, written by Peter Selinger 2001-2019
+</metadata>
+<g transform="translate(0.000000,360.000000) scale(0.562500,-0.562500)"
+   fill="#000000" stroke="none">
+<path d="M631 534 c0 -11 3 -14 6 -6 3 7 2 16 -1 19 -3 4 -6 -2 -5 -13z"/>
+<path d="M350 467 c-9 -7 -17 -28 -18 -48 -4 -50 17 -69 76 -69 28 0 42 4 34
+8 -7 5 -10 16 -6 26 4 11 2 21 -6 26 -17 10 -3 53 16 46 7 -3 16 -1 19 4 4 6
+-6 10 -22 11 -15 0 -39 2 -53 5 -14 2 -32 -2 -40 -9z"/>
+<path d="M225 450 c-4 -6 -23 -7 -46 -4 -35 6 -39 4 -39 -15 0 -11 5 -21 10
+-21 6 0 10 5 10 10 0 6 6 10 14 10 23 0 4 -54 -20 -58 -21 -3 -49 -55 -41 -76
+7 -17 132 -29 175 -17 19 6 34 6 37 0 4 -5 18 -10 33 -10 20 -1 22 -2 7 -6
+-11 -2 -27 -7 -35 -10 -8 -3 -30 -7 -48 -8 -41 -3 -68 -25 -31 -26 59 -1 145
+-11 152 -19 10 -9 -148 -49 -172 -43 -13 3 -17 11 -13 29 2 14 0 24 -7 24 -7
+0 -10 4 -7 9 9 13 -41 6 -59 -9 -10 -8 -15 -30 -15 -61 0 -55 6 -58 85 -39 53
+12 162 15 200 6 30 -7 31 -6 43 40 7 26 22 60 33 75 l20 28 -33 -1 c-51 -2
+-94 3 -80 9 6 2 12 12 13 21 0 11 2 12 6 5 8 -21 71 -16 83 6 5 11 7 22 2 24
+-7 5 -138 8 -262 6 -87 -1 -92 -1 -85 11 3 5 29 9 57 8 37 0 53 4 60 15 4 9
+14 22 22 29 7 7 16 26 20 41 6 26 5 27 -38 27 -25 0 -48 -5 -51 -10z"/>
+</g>
+</svg>
+
+                    </svg>
+
+                </span>
+                {#                                <img id="mock-hieroglyph" class="w-100" src="/static/images/hieroglyph-3.png" alt="">#}
+
+
             </div>
-            <div class="fh5co-portfolio-description">
-                <h1>Caihong</h1>
-                <h2>AI-hieroglyph generator</h2>
-                <p>Caihong consist of neural network and png2svg tracer. The neural network was trained on 5K Korean
-                    hieroglyphs and produce 64x64 png image. Then png2svg tracer converts the image into svg, so you can
-                    scale the hieroglyph the way you like.</p>
-                <p><a href="javascript:generateHieroglyph('#hieroglyph');" class="btn btn-primary">Generate hieroglyph</a> <a
-                        href="#" class="btn btn-primary">Save .svg</a></p>
+
+            <div class="col-lg-6">
+                <h1 class="font-weight-bold mb-1">Caihong</h1>
+                <p class="mb-4">AI-hieroglyph generator</p>
+
+                <!-- SLIDERS -->
+                <div class="card-group mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <label for="stiffness-range"><small>Adjust input</small></label>
+                            <input type="range" class="custom-range" min="-3" max="10" value="1" id="stiffness-range">
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- BUTTONS -->
+                <button class="btn btn-primary btn-block mb-2" id="generate-button">Generate</button>
+
+                <div class="btn-group btn-block">
+
+                    <button type="button" class="btn btn-outline-primary" id="download-button-png">Save .png</button>
+                    <button type="button" class="btn btn-outline-primary" id="download-button-svg">Save .svg</button>
+
+                </div>
+
             </div>
+
         </div>
     </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        $(document).ready(function () {
+            $('#generate-button').click(function () {
+                let stiffnessValue = document.getElementById("stiffness-range").value;
+                $.post('/tools/hieroglyph/generate', {stiffness : stiffnessValue})
+                    .done(function (response) {
+                        $('#hieroglyph').html(response);
+                    }).fail(function () {
+                });
+            });
+            $('#download-button-svg').click(function () {
+                window.location.replace('/tools/hieroglyph/download?format=svg');
+            });
+            $('#download-button-png').click(function () {
+                window.location.replace('/tools/hieroglyph/download?format=png');
+            });
+        });
+    </script>
 
 {% endblock %}

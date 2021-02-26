@@ -6,92 +6,80 @@
     {% else %}
         <title>Design Tools</title>
     {% endif %}
-
-    <!-- Google Webfonts -->
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,500' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,100,500' rel='stylesheet' type='text/css'>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Animate.css -->
-    <link rel="stylesheet" href="/static/css/animate.css">
-    <!-- Icomoon Icon Fonts-->
-    <link rel="stylesheet" href="/static/css/icomoon.css">
-    <!-- Simple Line Icons -->
-    <link rel="stylesheet" href="/static/css/simple-line-icons.css">
-    <!-- Theme Style -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Design tools</title>
+    <link rel="shortcut icon" href="/static/images/hieroglyph-3.png">
+    <!-- Bootstrap CSS -->
+{#    <link rel="stylesheet" href="/static/css/bootstrap.css">#}
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <!-- Style CSS -->
     <link rel="stylesheet" href="/static/css/style.css">
-    <!-- Modernizr JS -->
-    <script src="/static/js/modernizr-2.6.2.min.js"></script>
-    <script src="/static/js/respond.min.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;700;900&display=swap"
+          rel="stylesheet">
 
 </head>
 <body>
 {% block header %}
-    <header id="fh5co-header" role="banner">
-        <nav class="navbar navbar-default" role="navigation">
+
+    <div id="navigation-sticky">
+
+        <nav class="navbar bg-light navbar-light navbar-expand-lg sticky-top">
             <div class="container">
-                <div class="row">
-                    <div class="col-md-10 col-md-offset-1">
-                        <div class="navbar-header">
-                            <!-- Mobile Toggle Menu Button -->
-                            <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle visible-xs-block"
-                               data-toggle="collapse"
-                               data-target="#fh5co-navbar" aria-expanded="false" aria-controls="navbar"><i></i></a>
-                            <!--<a class="navbar-brand" href="home.html">Clean</a>-->
-                        </div>
-                        <div id="fh5co-navbar" class="navbar-collapse collapse">
-                            <ul class="nav navbar-nav navbar-right">
-                                <li class="active"><a href="{{ url_for('home.home') }}"><span>Home <span
-                                        class="border"></span></span></a></li>
-                                <li><a href="{{ url_for('home.home') }}"><span>Tools <span class="border"></span></span></a>
-                                </li>
-                                <li><a href="{{ url_for('home.home') }}"><span>About <span class="border"></span></span></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+
+                <a href="{{ url_for('home.home') }}" class="navbar-brand"><img src="/static/images/logo2.svg" alt="Logo"
+                                                                               title="Logo"></a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarResponsive"><span
+                        class="navbar-toggler-icon"></span></button>
+
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a href="{{ url_for('home.home') }}" class="nav-link active">Tools</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">Blog</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+                    </ul>
                 </div>
+
             </div>
         </nav>
-    </header>
+    </div>
 
 {% endblock %}
 {% block content %}{% endblock %}
 {% block footer %}
-    <footer id="fh5co-footer">
+
+    <footer class="bg-light">
         <div class="container">
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1 text-center">
-                    <p>&copy; Potekhin Bros. All Rights Reserved. <br>Created by <a
-                            href="https://www.instagram.com/ahni.potekhin/" target="_blank">Andrei Potekhin</a> and <a
-                            href="http://pexels.com/" target="_blank">Ruslan Potekhin</a></p>
+            <div class="row justify-content-center text-center text-dark">
+                <div class="col-md-9">
+                    <img src="/static/images/logo2.svg" alt="Logo" title="Logo">
+                    <p><small>Website and tools are created by <a href="https://www.instagram.com/ahni.potekhin">Andrei
+                        Potekhin</a> and <a href="https://www.instagram.com/ahni.potekhin">Ruslan Potekhin</a></small>
+                    </p>
                 </div>
             </div>
+
         </div>
     </footer>
 {% endblock %}
-{% block scripts %}
-    <script>
-        function generateHieroglyph(destElem) {
-            $.post('/tools/hieroglyph/generate')
-                .done(function (response) {
-                    console.log(typeof(response))
-                    console.log(response)
-                    console.log(response.innerHTML)
-                    $(destElem).html(response);
-                }).fail(function () {
-            });
-        }
-    </script>
+
     <!-- jQuery -->
-    <script src="/static/js/jquery.min.js"></script>
-    <!-- jQuery Easing -->
-    <script src="/static/js/jquery.easing.1.3.js"></script>
-    <!-- Bootstrap -->
+    <script src="/static/js/jquery-3.4.1.min.js"></script>
+    <!-- Bootstrap JS -->
     <script src="/static/js/bootstrap.min.js"></script>
-    <!-- Waypoints -->
-    <script src="/static/js/jquery.waypoints.min.js"></script>
-    <!-- Main JS -->
-    <script src="/static/js/main.js"></script>
+    <!-- Popper JS -->
+    <script src="/static/js/popper.min.js"></script>
+    <!-- Font Awesome -->
+    <script src="/static/js/all.min.js"></script>
+
+    <!-- End Script Source Files -->
+{% block scripts %}
+
 {% endblock %}
 
 </body>
