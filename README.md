@@ -6,6 +6,9 @@ Final docker container is deployed to the google cloud.
 
 #### [hieoglyph generator](http://zerosec.tools/tools/hieroglyph)
 
+Cherry-picked examples:
+![](https://i.imgur.com/4By0Am5.jpg)
+
 There are many types of generative models, but for this problem I've tried two of them: variational autoencoders and GANs. I've experienced with many approaches and different models' architectures and found WGAN with general penalty the most effective in my sample.
 
 For dataset I simply used hangul hieroglyphs: I've gerenated them as text first by unicode range, and then created images for each of them with [this](https://github.com/IBM/tensorflow-hangul-recognition/blob/master/tools/hangul-image-generator.py) script. After generation, hieroglyph is traced to svg to remove noise, make it rounded and create scalable vector that could be used in design.
